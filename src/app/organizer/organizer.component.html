@@ -5,17 +5,17 @@
     <hr />
   </header>
   <main>
-    <ul *ngIf="tasks.length; else noTasks">
-      <li class="task" *ngFor="let task of tasks; let i = index">
+    <ul *ngIf="employee.length; else noEmployee">
+      <li class="task" *ngFor="let one of employee; let i = index">
         <span>
           <strong>{{ i + 1 }}</strong>
-          {{ task.title }}
+          {{ one.name }}
         </span>
-        <button class="btn btn-primary" (click)="remove(task)">Remove</button>
+<!--        <button class="btn btn-primary" (click)="remove(task)">Remove</button>-->
       </li>
     </ul>
-    <ng-template #noTasks>
-      <p class="text-center">No tasks</p>
+    <ng-template #noEmployee>
+      <p class="text-center">No employee</p>
     </ng-template>
   </main>
   <footer>

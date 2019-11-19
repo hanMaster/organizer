@@ -1,0 +1,6 @@
+<div class="currentDate">
+  <strong
+    [class.dayOff]="dayOff"
+  >{{ date$ | async | moment: 'DD.MM.YYYY' }}</strong>
+</div>
+<hr>

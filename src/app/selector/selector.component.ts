@@ -13,6 +13,7 @@ export class SelectorComponent implements OnInit{
   date$: Observable<moment.Moment>;
 
   constructor(private dateService: DateService) {}
+
   go(dir: number) {
     this.dateService.changeMonth(dir);
   }

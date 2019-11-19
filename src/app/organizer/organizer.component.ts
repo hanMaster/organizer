@@ -5,6 +5,7 @@ import { TasksService, Task } from '../shared/tasks.service';
 import { switchMap } from 'rxjs/operators';
 import {Observable} from 'rxjs';
 import * as moment from 'moment';
+import {Employee, EmployeeService} from '../shared/employee.service';
 
 @Component({
   selector: 'app-organizer',
@@ -15,10 +16,12 @@ export class OrganizerComponent implements OnInit {
   form: FormGroup;
   tasks: Task[] = [];
   date$: Observable<moment.Moment>;
+  employee: Employee[] = [];
 
   constructor(
     private dateService: DateService,
-    private tasksService: TasksService
+    private tasksService: TasksService,
+    private employeeService: EmployeeService
   ) {}
 
   ngOnInit() {
@@ -26,6 +29,10 @@ export class OrganizerComponent implements OnInit {
       .pipe(switchMap(value => this.tasksService.load(value)))
       .subscribe(tasks => (this.tasks = tasks));
     this.date$ = this.dateService.date;
+
+    this.employeeService.load().subscribe( employee =>{
+      this.employee = employee;
+    });
 
     this.form = new FormGroup({
       title: new FormControl('', Validators.required)

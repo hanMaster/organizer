@@ -1,0 +1,10 @@
+.currentDate{
+  text-align: center;
+  padding: 5px;
+  margin: 10px;
+  color: #666;
+}
+
+.dayOff {
+  color: #dc200b;
+}
